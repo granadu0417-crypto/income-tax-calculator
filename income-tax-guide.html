@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종합소득세 신고 가이드 - 2025년 완벽 정리</title>
+    <meta name="description" content="종합소득세 신고 방법, 필요 서류, 절세 팁까지 2025년 종합소득세의 모든 것을 확인하세요.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .nav-menu {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .guide-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .guide-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .guide-section h3 {
+            color: #764ba2;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        .step-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .step-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .step-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+        }
+
+        .timeline-item h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .contact-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tip-box strong {
+            color: #0c5460;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #721c24;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box strong {
+            color: #721c24;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin: 8px 0;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .nav-links {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-section {
+                padding: 20px;
+            }
+
+            .guide-section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 종합소득세 신고 가이드</h1>
+            <p>2025년 종합소득세의 모든 것을 확인하세요</p>
+        </div>
+
+        <div class="nav-menu">
+            <div class="nav-links">
+                <a href="index.html">💰 종합소득세</a>
+                <a href="freelancer-tax.html">💼 프리랜서</a>
+                <a href="business-income.html">🏢 사업소득</a>
+                <a href="year-end-tax.html">📊 연말정산 비교</a>
+                <a href="income-tax-guide.html">📖 세금가이드</a>
+            </div>
+        </div>
+
+        <!-- 종합소득세란? -->
+        <div class="guide-section">
+            <h2>💰 종합소득세란?</h2>
+            
+            <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                종합소득세는 개인이 1년 동안 벌어들인 모든 소득을 합산하여 과세하는 세금입니다. 근로소득, 사업소득, 기타소득, 이자·배당소득, 연금소득, 부동산임대소득 등을 모두 합산하여 계산합니다.
+            </p>
+
+            <h3>과세 대상 소득</h3>
+            <ul>
+                <li><strong>근로소득:</strong> 회사 급여, 상여금, 수당</li>
+                <li><strong>사업소득:</strong> 개인사업자, 프리랜서 수입</li>
+                <li><strong>이자소득:</strong> 예금 이자, 채권 이자 (2천만원 초과 시)</li>
+                <li><strong>배당소득:</strong> 주식 배당금 (2천만원 초과 시)</li>
+                <li><strong>연금소득:</strong> 사적연금, 퇴직연금</li>
+                <li><strong>기타소득:</strong> 강연료, 원고료, 상금, 복권 당첨금</li>
+                <li><strong>임대소득:</strong> 부동산 임대료, 전월세 보증금 이자</li>
+            </ul>
+        </div>
+
+        <!-- 신고 대상 -->
+        <div class="guide-section">
+            <h2>📋 종합소득세 신고 대상</h2>
+            
+            <h3>✅ 반드시 신고해야 하는 경우</h3>
+            <ul>
+                <li>개인사업자 (간이과세자 포함)</li>
+                <li>프리랜서 (3.3% 원천징수 대상)</li>
+                <li>2개 이상 회사에서 근로소득이 있는 경우</li>
+                <li>근로소득 + 사업소득(프리랜서) 등 복합소득이 있는 경우</li>
+                <li>연말정산을 하지 못한 근로소득자</li>
+                <li>이자·배당소득이 연 2천만원 초과</li>
+                <li>부동산 임대소득이 있는 경우</li>
+            </ul>
+
+            <h3>❌ 신고 제외 대상</h3>
+            <ul>
+                <li>근로소득만 있고 연말정산을 완료한 경우</li>
+                <li>비과세 또는 분리과세 소득만 있는 경우</li>
+                <li>직전 과세기간 수입금액이 없는 간이과세자</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>⚠️ 주의:</strong> 기타소득(강연료, 원고료 등)이 연 300만원 이하면 신고 의무는 없지만, 신고하면 환급받을 수 있습니다!
+            </div>
+        </div>
+
+        <!-- 신고 일정 -->
+        <div class="guide-section">
+            <h2>📅 2025년 종합소득세 신고 일정</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>5월 1일 ~ 5월 31일</h4>
+                    <p><strong>종합소득세 신고·납부 기간</strong><br>
+                    홈택스 또는 세무서 방문하여 신고 (2024년 귀속분)</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>6월 ~ 7월</h4>
+                    <p><strong>환급금 지급</strong><br>
+                    신고 후 30일 이내 환급 (계좌로 입금)</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>6월 ~ 8월</h4>
+                    <p><strong>추가 납부 (분납 가능)</strong><br>
+                    납부세액이 1천만원 초과 시 2개월 분납 가능</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 TIP:</strong> 성실신고확인 대상자(수입 15억 초과)는 6월 30일까지 신고해야 합니다.
+            </div>
+        </div>
+
+        <!-- 신고 방법 -->
+        <div class="guide-section">
+            <h2>💻 종합소득세 신고 방법</h2>
+            
+            <div class="step-card">
+                <h4>STEP 1. 홈택스 접속 (www.hometax.go.kr)</h4>
+                <p>공동인증서 또는 간편인증으로 로그인</p>
+            </div>
+
+            <div class="step-card">
+                <h4>STEP 2. 종합소득세 신고 메뉴 선택</h4>
+                <p>신고/납부 → 세금신고 → 종합소득세 신고</p>
+            </div>
+
+            <div class="step-card">
+                <h4>STEP 3. 신고 유형 선택</h4>
+                <p>• 일반신고: 사업자, 프리랜서<br>
+                • 근로소득 신고: 연말정산 못한 경우<br>
+                • 모두채움/단순경비율: 간편 신고 가능</p>
+            </div>
+
+            <div class="step-card">
+                <h4>STEP 4. 소득 및 경비 입력</h4>
+                <p>수입금액, 필요경비, 공제 항목 입력 (자동 불러오기 가능)</p>
+            </div>
+
+            <div class="step-card">
+                <h4>STEP 5. 세액 확인 및 신고</h4>
+                <p>계산된 세액 확인 후 전자신고 제출</p>
+            </div>
+
+            <div class="step-card">
+                <h4>STEP 6. 납부 또는 환급</h4>
+                <p>• 납부: 신용카드, 계좌이체, 가상계좌<br>
+                • 환급: 환급 계좌 등록 (30일 이내 입금)</p>
+            </div>
+        </div>
+
+        <!-- 필요 서류 -->
+        <div class="guide-section">
+            <h2>📄 종합소득세 신고 필요 서류</h2>
+            
+            <h3>공통 서류</h3>
+            <ul>
+                <li>소득금액증명원 (홈택스 발급)</li>
+                <li>원천징수영수증 (홈택스 자동 조회)</li>
+                <li>사업자등록증 (사업자인 경우)</li>
+            </ul>
+
+            <h3>사업자 추가 서류</h3>
+            <ul>
+                <li>장부 (간편장부 또는 복식부기)</li>
+                <li>매출·매입 내역 (세금계산서, 신용카드 매출)</li>
+                <li>경비 증빙자료 (영수증, 계산서, 카드내역)</li>
+            </ul>
+
+            <h3>공제 관련 서류</h3>
+            <ul>
+                <li>국민연금·건강보험 납부 확인서</li>
+                <li>의료비·교육비 영수증</li>
+                <li>기부금 영수증</li>
+                <li>주택자금 상환증명서 (주택담보대출)</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 TIP:</strong> 대부분의 서류는 홈택스 '연말정산 간소화 서비스'에서 자동 조회됩니다!
+            </div>
+        </div>
+
+        <!-- 절세 팁 -->
+        <div class="guide-section">
+            <h2>💡 종합소득세 절세 10가지 팁</h2>
+            
+            <ul style="line-height: 2;">
+                <li><strong>1. 경비 철저히 관리:</strong> 사업 관련 모든 경비 영수증 보관</li>
+                <li><strong>2. 간편장부 vs 복식부기:</strong> 복식부기로 20% 세액공제 받기</li>
+                <li><strong>3. 연금저축 가입:</strong> 연 400만원까지 세액공제 (16.5%)</li>
+                <li><strong>4. IRP 추가 가입:</strong> 연 700만원 추가 공제 가능</li>
+                <li><strong>5. 신용카드 공제:</strong> 총급여 25% 초과분 공제 (최대 300만원)</li>
+                <li><strong>6. 의료비 공제:</strong> 총급여 3% 초과분 15% 세액공제</li>
+                <li><strong>7. 교육비 공제:</strong> 본인 대학 등록금 15% 세액공제</li>
+                <li><strong>8. 기부금 공제:</strong> 1천만원 이하 15%, 초과분 30%</li>
+                <li><strong>9. 전자신고 공제:</strong> 홈택스 신고 시 2만원 추가 공제</li>
+                <li><strong>10. 성실신고사전안내:</strong> 안내문 받으면 꼭 신고하세요 (가산세 면제)</li>
+            </ul>
+        </div>
+
+        <!-- 가산세 -->
+        <div class="guide-section">
+            <h2>⚠️ 종합소득세 가산세</h2>
+            
+            <h3>미신고 가산세</h3>
+            <ul>
+                <li><strong>일반:</strong> 무신고 납부세액의 20%</li>
+                <li><strong>부정:</strong> 무신고 납부세액의 40%</li>
+            </ul>
+
+            <h3>과소신고 가산세</h3>
+            <ul>
+                <li><strong>일반:</strong> 과소신고 납부세액의 10%</li>
+                <li><strong>부정:</strong> 과소신고 납부세액의 40%</li>
+            </ul>
+
+            <h3>납부지연 가산세</h3>
+            <ul>
+                <li>납부하지 않은 세액의 연 8.03% (일할 계산)</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>⚠️ 주의:</strong> 신고 기한(5월 31일)을 넘기면 가산세가 부과됩니다. 꼭 기한 내 신고하세요!
+            </div>
+        </div>
+
+        <!-- 연락처 -->
+        <div class="guide-section">
+            <h2>📞 유용한 연락처</h2>
+            
+            <div class="contact-card">
+                <h4>🏛️ 국세청 (종합소득세 상담)</h4>
+                <p>126</p>
+                <a href="https://www.hometax.go.kr" target="_blank">www.hometax.go.kr</a>
+                <small>평일 09:00 ~ 18:00</small>
+            </div>
+
+            <div class="contact-card">
+                <h4>💻 홈택스 고객센터</h4>
+                <p>126</p>
+                <small>인터넷 신고 관련 문의</small>
+            </div>
+
+            <div class="contact-card">
+                <h4>📱 손택스 (모바일 앱)</h4>
+                <p>스마트폰으로 간편 신고</p>
+                <small>구글플레이 / 앱스토어에서 다운로드</small>
+            </div>
+        </div>
+
+        <div class="guide-section" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white; border-bottom: none;">💡 종합소득세, 이제 준비되셨나요?</h2>
+            <p style="font-size: 1.1em; margin: 20px 0;">정확한 계산으로 절세하고,<br>5월 31일 기한 내 신고하세요!</p>
+            <a href="index.html" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 10px;">💰 종합소득세 계산하러 가기</a>
+        </div>
+    </div>
+</body>
+</html>

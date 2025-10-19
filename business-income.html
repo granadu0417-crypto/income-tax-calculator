@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사업소득세 계산기 - 간편장부, 복식부기</title>
+    <meta name="description" content="사업소득세 계산기. 간편장부, 복식부기, 기장세액공제까지 정확하게 계산하세요.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .nav-menu {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .calculator h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-item.total {
+            background: rgba(255, 255, 255, 0.3);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .result-label {
+            font-size: 1.1em;
+        }
+
+        .result-value {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .info-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .info-box th,
+        .info-box td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .info-box th {
+            background: #667eea;
+            color: white;
+        }
+
+        .info-box tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .nav-links {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator {
+                padding: 20px;
+            }
+
+            .calculator h2 {
+                font-size: 1.4em;
+            }
+
+            .result-item {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 사업소득세 계산기</h1>
+            <p>간편장부, 복식부기 사업소득세를 정확하게 계산하세요</p>
+        </div>
+
+        <div class="nav-menu">
+            <div class="nav-links">
+                <a href="index.html">💰 종합소득세</a>
+                <a href="freelancer-tax.html">💼 프리랜서</a>
+                <a href="business-income.html">🏢 사업소득</a>
+                <a href="year-end-tax.html">📊 연말정산 비교</a>
+                <a href="income-tax-guide.html">📖 세금가이드</a>
+            </div>
+        </div>
+
+        <div class="calculator">
+            <h2>사업소득세 계산</h2>
+            
+            <div class="form-group">
+                <label for="totalRevenue">연간 총 수입금액 (원)</label>
+                <input type="number" id="totalRevenue" placeholder="예: 100000000" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="bookkeeping">기장 방법</label>
+                <select id="bookkeeping" onchange="updateBookkeeping()">
+                    <option value="simple">간편장부 (수입 7,500만원 미만)</option>
+                    <option value="double">복식부기 (수입 7,500만원 이상)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="businessType">업종 구분</label>
+                <select id="businessType">
+                    <option value="restaurant">음식점업 (경비율 71.2%)</option>
+                    <option value="retail">소매업 (경비율 76.8%)</option>
+                    <option value="service">서비스업 (경비율 63.2%)</option>
+                    <option value="professional">전문직 (경비율 53.6%)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="actualExpense">실제 경비 (원)</label>
+                <input type="number" id="actualExpense" placeholder="증빙 가능한 실제 경비" value="0" min="0">
+                <small style="color: #666; display: block; margin-top: 5px;">
+                    간편장부: 경비율 vs 실제 경비 중 큰 값 적용<br>
+                    복식부기: 실제 경비만 인정
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="familyMembers">부양가족 수 (본인 포함)</label>
+                <select id="familyMembers">
+                    <option value="1">1명 (본인만)</option>
+                    <option value="2">2명</option>
+                    <option value="3">3명</option>
+                    <option value="4">4명</option>
+                    <option value="5">5명 이상</option>
+                </select>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateTax()">사업소득세 계산하기</button>
+
+            <div class="result" id="result">
+                <h3>💸 사업소득세 계산 결과</h3>
+                <div class="result-item">
+                    <span class="result-label">연간 총 수입금액</span>
+                    <span class="result-value" id="totalRevenueResult">0원</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">필요경비</span>
+                    <span class="result-value" id="expense">0원</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">사업소득금액</span>
+                    <span class="result-value" id="businessIncome">0원</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">인적공제</span>
+                    <span class="result-value" id="familyDeduction">0원</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">과세표준</span>
+                    <span class="result-value" id="taxableIncome">0원</span>
+                </div>
+                <div class="result-item total">
+                    <span class="result-label">산출세액</span>
+                    <span class="result-value" id="calculatedTax">0원</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">기장세액공제</span>
+                    <span class="result-value" id="bookkeepingCredit">0원</span>
+                </div>
+                <div class="result-item total">
+                    <span class="result-label">종합소득세</span>
+                    <span class="result-value" id="incomeTax">0원</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">지방소득세 (10%)</span>
+                    <span class="result-value" id="localTax">0원</span>
+                </div>
+                <div class="result-item total">
+                    <span class="result-label">총 납부세액</span>
+                    <span class="result-value" id="totalTax">0원</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>📌 사업소득세 기장 방법</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>간편장부</th>
+                        <th>복식부기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>대상</strong></td>
+                        <td>수입 7,500만원 미만</td>
+                        <td>수입 7,500만원 이상</td>
+                    </tr>
+                    <tr>
+                        <td><strong>경비 인정</strong></td>
+                        <td>경비율 or 실제 경비</td>
+                        <td>실제 경비만 (증빙 필수)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>기장세액공제</strong></td>
+                        <td>산출세액의 10% (최대 100만원)</td>
+                        <td>산출세액의 20% (최대 200만원)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>세무사 필요성</strong></td>
+                        <td>선택 (직접 가능)</td>
+                        <td>필수 (복잡)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: #666; margin-top: 15px; line-height: 1.6;">
+                <strong>※ 기장세액공제:</strong> 장부 기장 시 세액공제 혜택<br>
+                <strong>※ 신고기간:</strong> 매년 5월 1일 ~ 5월 31일
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function formatNumber(num) {
+            return new Intl.NumberFormat('ko-KR').format(Math.floor(num));
+        }
+
+        function updateBookkeeping() {
+            const bookkeeping = document.getElementById('bookkeeping').value;
+            const totalRevenue = parseInt(document.getElementById('totalRevenue').value) || 0;
+            
+            if (bookkeeping === 'simple' && totalRevenue >= 75000000) {
+                alert('수입 7,500만원 이상은 복식부기 대상입니다.');
+            } else if (bookkeeping === 'double' && totalRevenue < 75000000) {
+                alert('수입 7,500만원 미만은 간편장부를 사용할 수 있습니다.');
+            }
+        }
+
+        function calculateTax() {
+            const totalRevenue = parseInt(document.getElementById('totalRevenue').value);
+            const bookkeeping = document.getElementById('bookkeeping').value;
+            const businessType = document.getElementById('businessType').value;
+            const actualExpense = parseInt(document.getElementById('actualExpense').value) || 0;
+            const familyMembers = parseInt(document.getElementById('familyMembers').value);
+
+            if (!totalRevenue || totalRevenue <= 0) {
+                alert('연간 총 수입금액을 입력해주세요.');
+                return;
+            }
+
+            // 1. 업종별 경비율
+            let expenseRate = 0;
+            switch(businessType) {
+                case 'restaurant':
+                    expenseRate = 0.712;
+                    break;
+                case 'retail':
+                    expenseRate = 0.768;
+                    break;
+                case 'service':
+                    expenseRate = 0.632;
+                    break;
+                case 'professional':
+                    expenseRate = 0.536;
+                    break;
+            }
+
+            // 2. 필요경비 계산
+            let expense = 0;
+            if (bookkeeping === 'simple') {
+                const rateExpense = totalRevenue * expenseRate;
+                expense = Math.max(rateExpense, actualExpense);
+            } else {
+                expense = actualExpense;
+            }
+
+            // 3. 사업소득금액
+            const businessIncome = totalRevenue - expense;
+
+            // 4. 인적공제
+            const familyDeduction = familyMembers * 1500000;
+
+            // 5. 과세표준
+            let taxableIncome = businessIncome - familyDeduction;
+            if (taxableIncome < 0) taxableIncome = 0;
+
+            // 6. 산출세액 (누진세율)
+            let calculatedTax = 0;
+            if (taxableIncome <= 14000000) {
+                calculatedTax = taxableIncome * 0.06;
+            } else if (taxableIncome <= 50000000) {
+                calculatedTax = taxableIncome * 0.15 - 1260000;
+            } else if (taxableIncome <= 88000000) {
+                calculatedTax = taxableIncome * 0.24 - 5760000;
+            } else if (taxableIncome <= 150000000) {
+                calculatedTax = taxableIncome * 0.35 - 15440000;
+            } else if (taxableIncome <= 300000000) {
+                calculatedTax = taxableIncome * 0.38 - 19940000;
+            } else if (taxableIncome <= 500000000) {
+                calculatedTax = taxableIncome * 0.40 - 25940000;
+            } else if (taxableIncome <= 1000000000) {
+                calculatedTax = taxableIncome * 0.42 - 35940000;
+            } else {
+                calculatedTax = taxableIncome * 0.45 - 65940000;
+            }
+
+            // 7. 기장세액공제
+            let bookkeepingCredit = 0;
+            let creditRate = 0;
+            let creditMax = 0;
+
+            if (bookkeeping === 'simple') {
+                creditRate = 0.10;
+                creditMax = 1000000;
+            } else {
+                creditRate = 0.20;
+                creditMax = 2000000;
+            }
+
+            bookkeepingCredit = Math.min(calculatedTax * creditRate, creditMax);
+
+            // 8. 종합소득세
+            const incomeTax = calculatedTax - bookkeepingCredit;
+
+            // 9. 지방소득세
+            const localTax = incomeTax * 0.1;
+
+            // 10. 총 납부세액
+            const totalTax = incomeTax + localTax;
+
+            // 결과 표시
+            document.getElementById('totalRevenueResult').textContent = formatNumber(totalRevenue) + '원';
+            document.getElementById('expense').textContent = formatNumber(expense) + '원';
+            document.getElementById('businessIncome').textContent = formatNumber(businessIncome) + '원';
+            document.getElementById('familyDeduction').textContent = formatNumber(familyDeduction) + '원';
+            document.getElementById('taxableIncome').textContent = formatNumber(taxableIncome) + '원';
+            document.getElementById('calculatedTax').textContent = formatNumber(calculatedTax) + '원';
+            document.getElementById('bookkeepingCredit').textContent = '-' + formatNumber(bookkeepingCredit) + '원 (' + (creditRate * 100) + '%)';
+            document.getElementById('incomeTax').textContent = formatNumber(incomeTax) + '원';
+            document.getElementById('localTax').textContent = formatNumber(localTax) + '원';
+            document.getElementById('totalTax').textContent = formatNumber(totalTax) + '원';
+
+            document.getElementById('result').classList.add('show');
+        }
+
+        // 엔터키로 계산
+        document.getElementById('totalRevenue').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculateTax();
+            }
+        });
+    </script>
+</body>
+</html>
